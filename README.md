@@ -8,3 +8,4 @@ Simple and Swift Setup
 Execute Notebook Cells: By simply running the provided notebook cells, all dependencies are automatically configured. Designed for a hassle-free setup experience, catering to both novices and experts alike.
 
 Instant Access with Public URL: Upon initialization, receive a public URL granting access to the Ollama-Companion. Interact with a variety of language models and unleash the tool's full potential with ease.
+For more info see the main project.
