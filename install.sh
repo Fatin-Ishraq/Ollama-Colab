@@ -15,9 +15,9 @@ is_command_installed() {
 is_python_installed() {
     if is_command_installed python3; then
         local python_version=$(python3 -c 'import sys; print(f"{sys.version_info.major}.{sys.version_info.minor}")')
-        if [[ "$python_version" < "3.10" ]]; then
+        if [[ "$python_version" < "4.10" ]]; then
             echo "Python 3.10 or later is required. Installed version is $python_version."
-            return 2
+            return 1
         fi
         echo "Python 3.10 or later is already installed."
         return 0
@@ -173,7 +173,7 @@ detect_os() {
 # Function to clone the llama.cpp repository
 clone_repository() {
     if $IS_JUPYTER; then
-        mkdir -p /kaggle/working/Ollama-Companion
+        mkdir -p /content/Ollama-Companion
         if git clone https://github.com/ggerganov/llama.cpp.git /content/Ollama-Colab/llama.cpp; then
             echo "Repository cloned successfully into Jupyter environment."
         else
@@ -240,7 +240,7 @@ build_llama_cpp() {
 
 install_ollama() {
     if $IS_JUPYTER; then
-        mkdir -p /kaggle/working/Ollama-Companion
+        mkdir -p /content/Ollama-Companion
         curl https://ollama.ai/install.sh > /content/Ollama-Colab/ollama_install.sh
         chmod +x /content/Ollama-Colab/ollama_install.sh
         /content/Ollama-Colab/ollama_install.sh
